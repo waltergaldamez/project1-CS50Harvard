@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Search for a Book!
+{% endblock %}
+
+{% block body %}
+    <h3>Enter a Book title, author, isbn, or year date!</h3>
+    <form action="{{ url_for('welcome') }}" method="post">
+        <input type="text" name="search_val" placeholder="title, author, isbn, year date">
+        <button type="submit" name="button">Search</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block title %}
+{{ book_info[0]['title'] }}
+{% endblock %}
+
+{% block heading %}
+{{ book_info[0]['title'] }}
+{% endblock %}
+
+{% block body %}
+
+<form action="{{ url_for('welcome') }}" method="post">
+    <input type="text" name="search_val" placeholder="title, author, isbn, year date">
+    <button type="submit" name="button">Search</button>
+</form>
+
+
+<form method="POST" class="form-border">
+            <div class="form-row">
+                <div class="form-group col-sm">
+                    <label for="rating">Rate this book</label>
+                    <select id="rating" name="rating" class="form-control" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option selected value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-6">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Say something</span>
+                        </div>
+                        <textarea name="comment" id="comment" class="form-control" rows="1" required></textarea>
+                    </div>
+                </div>
+                <div class="form-group col-sm">
+                    <button class="btn btn-success" type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+
+
+<ul>
+  <li><b>Title</b>: {{ book_info[0]['title'] }} </li>
+  <li><b>Author</b>: {{ book_info[0]['author'] }}</li>
+  <li><b>Year</b>: {{ book_info[0]['year'] }}</li>
+  <li><b>ISBN</b>: {{ book_info[0]['isbn'] }}</li>
+  <li><b>Reviews</b>:
+      <ul>
+        <h5>No of Ratings: {{ book_info[1]['work_ratings_count']  }}</h5>
+        <h5>Average rating: {{ book_info[1]['average_rating']  }}</h5>
+        <h5><a href="https://www.goodreads.com/search?q={{book_info[0]['title']}}">Good Reads Page</a></h5>
+        {% for review in reviews %}
+            <li><b>{{ review['username'] }}</b> gives this a {{ review['rating'] }} rating : {{ review['comment'] }} </li>
+        {% else %}
+            No Reviews have been posted yet
+        {% endfor %}
+      </ul>
+  </li>
+</ul>
+
+{% endblock %}

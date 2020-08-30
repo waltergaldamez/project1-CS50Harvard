@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Registration
+{% endblock %}
+
+{% block heading %}
+<h1>Account Registration!</h1>
+<h4 style="color:red">{{ header }}</h4>
+{% endblock %}
+
+{% block body %}
+    <form action="{{ url_for('registration_process') }}" method="post">
+      <input type="text" name="username" placeholder="User">
+      <input type="password" name="password" placeholder="Password">
+      <button type="submit" name="button">Register</button>
+    </form>
+{% endblock %}

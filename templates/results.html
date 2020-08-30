@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Book results
+{% endblock %}
+
+{% block heading %}
+    <h3>Enter a Book title, author, isbn, or year date!</h3>
+    <form action="{{ url_for('welcome') }}" method="post">
+        <input type="text" name="search_val" placeholder="title, author, isbn, year date">
+        <button type="submit" name="button">Search</button>
+    </form>
+
+    <ul>
+      {% for book in books %}
+          <li><a href="/book/{{book['isbn']}}">{{ book }}</a></li>
+      {% else %}
+          No book was found for that search
+      {% endfor %}
+    </ul>
+{% endblock %}

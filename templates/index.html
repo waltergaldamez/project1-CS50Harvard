@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Welcome to LazyReads!
+{% endblock %}
+
+{% block heading %}
+<h1>LazyReads!</h1>
+{% endblock %}
+
+{% block body %}
+<h4><a href="{{ url_for('login') }}">Login</a> or <a href="{{ url_for('registration') }}">Create an Account</a></h4>
+{% endblock %}
